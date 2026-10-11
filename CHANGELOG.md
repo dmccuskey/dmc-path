@@ -1,5 +1,13 @@
 # Changelog
 
+## 0.3.0 (2026-10-11)
+
+### Changed
+
+- Rebuilt with lua-path 0.3.0:
+  - `parse()` takes a path ending with the separator as ending with a folder (`app/v1.2/`), and `.` and `..` as folders. A name with only a leading dot (`.hidden`) or a trailing one now has a `name`, and no `ext`.
+  - `buildRequire()` raises an error for a path with no `require` string: an absolute path, a `.` or `..` part, or a part containing the separator (`app/v1.2/a.lua`, `a.tar.gz`). Before, it returned a string `require` couldn't load.
+
 ## 0.2.0 (2026-09-29)
 
 ### Changed

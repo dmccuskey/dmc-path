@@ -74,3 +74,14 @@ function test_build_path_separator()
 	local info = Path.parse( 'lib\\ui\\a.png' )
 	assert_equal( 'lib\\ui\\a.png', Path.buildPath( info ) )
 end
+
+-- lua-path 0.3.0: a trailing separator marks a folder, a dotfile has a
+-- name, and buildRequire() refuses a path with no require string
+function test_file_folder_rule()
+	local info = Path.parse( 'app/v1.2/' )
+	assert_equal( 2, #info.path )
+	assert_nil( info.filename )
+	assert_equal( '.hidden', Path.parse( 'home/.hidden' ).name )
+	assert_error( function() Path.buildRequire( Path.parse( '/usr/x.lua' ) ) end )
+	assert_error( function() Path.buildRequire( Path.parse( '../a.lua' ) ) end )
+end

@@ -90,7 +90,7 @@ dmc-path has no settings: `dmc_corona.cfg` needs no section for it, only the `[D
 
 ## Known Issues
 
-They are lua-path's, in its [Known Issues](https://github.com/dmccuskey/lua-path#known-issues): any dot in the last part makes it a file (`app/v1.2` is a file named `v1`), `buildRequire()` of an absolute path or one with `..` isn't a valid `require` string, and Windows drive letters aren't recognized as absolute.
+They are lua-path's, in its [Known Issues](https://github.com/dmccuskey/lua-path#known-issues): a file with no dot in its name is taken as a folder (`bin/lua`), `..` isn't resolved, and Windows drive letters aren't recognized as absolute.
 
 ## Development
 
